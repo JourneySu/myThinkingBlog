@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 誤入的 Obsidian 設定檔（不應與網站程式碼混在一起）
+src/.obsidian/
+**/.obsidian/

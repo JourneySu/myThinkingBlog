@@ -12,10 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.1",
     "@astrojs/mdx": "^8.0.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
+    "@flowershow/remark-wiki-link": "^3.3.1",
     "astro": "^7.3.2",
+    "rehype-callouts": "^2.2.0",
     "sharp": "^0.35.0"
   },
   "allowScripts": {

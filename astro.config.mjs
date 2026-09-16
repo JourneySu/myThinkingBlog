@@ -3,11 +3,29 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import wikiLinkPlugin from '@flowershow/remark-wiki-link';
+import rehypeCallouts from 'rehype-callouts';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
 	integrations: [mdx(), sitemap()],
+	markdown: {
+		processor: unified({
+			remarkPlugins: [
+				[wikiLinkPlugin, {
+					urlResolver: ({ filePath, isEmbed }) => {
+						if (isEmbed) {
+							return `/images/${filePath}`;
+						}
+						return `/blog/${filePath}/`;
+					},
+				}],
+			],
+			rehypePlugins: [rehypeCallouts],
+		}),
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),
